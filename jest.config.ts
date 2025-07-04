@@ -9,7 +9,8 @@ const config: Config = {
   testMatch: ["<rootDir>/src/**/*.spec.ts"],
   moduleNameMapper: {
     "@/(.*)": "<rootDir>/src/$1"
-  }
+  },
+  setupFiles: ["<rootDir>/jest.setup.ts"]
 };
 
 export default config;
