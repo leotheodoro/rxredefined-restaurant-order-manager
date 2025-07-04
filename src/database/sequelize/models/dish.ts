@@ -12,7 +12,7 @@ export interface DishAttributes {
   id: string;
   name: string;
   description: string;
-  price: number;
+  priceCents: number;
   category: DishCategory;
   createdAt?: Date;
   updatedAt?: Date;
@@ -24,7 +24,7 @@ export class Dish extends Model<DishAttributes, DishCreationAttributes> implemen
   public id!: string;
   public name!: string;
   public description!: string;
-  public price!: number;
+  public priceCents!: number;
   public category!: DishCategory;
 
   public readonly createdAt!: Date;
@@ -37,6 +37,7 @@ export class Dish extends Model<DishAttributes, DishCreationAttributes> implemen
           type: DataTypes.UUID,
           defaultValue: DataTypes.UUIDV4,
           primaryKey: true,
+          field: "id",
         },
         name: {
           type: DataTypes.STRING,
@@ -44,6 +45,7 @@ export class Dish extends Model<DishAttributes, DishCreationAttributes> implemen
           validate: {
             notEmpty: true,
           },
+          field: "name",
         },
         description: {
           type: DataTypes.TEXT,
@@ -51,13 +53,15 @@ export class Dish extends Model<DishAttributes, DishCreationAttributes> implemen
           validate: {
             notEmpty: true,
           },
+          field: "description",
         },
-        price: {
+        priceCents: {
           type: DataTypes.INTEGER,
           allowNull: false,
           validate: {
             min: 0,
           },
+          field: "price_cents",
         },
         category: {
           type: DataTypes.ENUM(DishCategory.STARTER, DishCategory.MAIN_COURSE, DishCategory.DESSERT, DishCategory.DRINK),
@@ -65,6 +69,7 @@ export class Dish extends Model<DishAttributes, DishCreationAttributes> implemen
           validate: {
             isIn: [Object.values(DishCategory)],
           },
+          field: "category",
         },
       },
       {

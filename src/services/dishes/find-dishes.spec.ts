@@ -16,14 +16,14 @@ describe('Find Dishes Service', () => {
     await dishesRepository.create({
       name: 'Pizza',
       description: 'Pizza with cheese and tomato',
-      price: 2950,
+      priceCents: 2950,
       category: DishCategory.MAIN_COURSE,
     })
 
     await dishesRepository.create({
       name: 'Salad',
       description: 'Salad with lettuce and tomato',
-      price: 1950,
+      priceCents: 1950,
       category: DishCategory.STARTER,
     })
 
@@ -39,14 +39,14 @@ describe('Find Dishes Service', () => {
     await dishesRepository.create({
       name: 'Pizza',
       description: 'Pizza with cheese and tomato',
-      price: 2950,
+      priceCents: 2950,
       category: DishCategory.MAIN_COURSE,
     })
 
     await dishesRepository.create({
       name: 'Salad',
       description: 'Salad with lettuce and tomato',
-      price: 1950,
+      priceCents: 1950,
       category: DishCategory.STARTER,
     })
 
@@ -64,14 +64,14 @@ describe('Find Dishes Service', () => {
     await dishesRepository.create({
       name: 'Pizza',
       description: 'Pizza with cheese and tomato',
-      price: 2950,
+      priceCents: 2950,
       category: DishCategory.MAIN_COURSE,
     })
 
     await dishesRepository.create({
       name: 'Salad',
       description: 'Salad with lettuce and tomato',
-      price: 1950,
+      priceCents: 1950,
       category: DishCategory.STARTER,
     })
 
@@ -96,14 +96,14 @@ describe('Find Dishes Service', () => {
     await dishesRepository.create({
       name: 'Pizza',
       description: 'Pizza with cheese and tomato',
-      price: 2950,
+      priceCents: 2950,
       category: DishCategory.MAIN_COURSE,
     })
 
     await dishesRepository.create({
       name: 'Salad',
       description: 'Salad with lettuce and tomato',
-      price: 1950,
+      priceCents: 1950,
       category: DishCategory.STARTER,
     })
 

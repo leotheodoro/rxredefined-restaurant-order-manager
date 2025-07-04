@@ -10,7 +10,7 @@ export class InMemoryDishesRepository implements DishesRepository {
       id: randomUUID(),
       name: data.name,
       description: data.description,
-      price: data.price,
+      priceCents: data.priceCents,
       category: data.category,
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -37,7 +37,7 @@ export class InMemoryDishesRepository implements DishesRepository {
       .slice((page - 1) * limit, page * limit)
       .map((dish) => ({
         ...dish,
-        price: dish.price / 100,
+        priceCents: dish.priceCents,
       }));
   }
 
@@ -47,5 +47,11 @@ export class InMemoryDishesRepository implements DishesRepository {
       : this.dishes;
 
     return filteredDishes.length;
+  }
+
+  async findById(id: string): Promise<DishAttributes | null> {
+    const dish = this.dishes.find((dish) => dish.id === id)
+    if (!dish) return null
+    return dish
   }
 }
