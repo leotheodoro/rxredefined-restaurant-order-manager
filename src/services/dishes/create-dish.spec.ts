@@ -15,7 +15,7 @@ describe('Create Dish Service', () => {
     const { dish } = await sut.execute({
       name: 'Pizza',
       description: 'Pizza with cheese and tomato',
-      price: 10,
+      price: 2950,
       category: DishCategory.MAIN_COURSE,
     })
 

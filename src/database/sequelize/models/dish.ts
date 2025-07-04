@@ -53,7 +53,7 @@ export class Dish extends Model<DishAttributes, DishCreationAttributes> implemen
           },
         },
         price: {
-          type: DataTypes.FLOAT,
+          type: DataTypes.INTEGER,
           allowNull: false,
           validate: {
             min: 0,

@@ -5,7 +5,7 @@ import { z } from "zod"
 const createDishSchema = z.object({
   name: z.string(),
   description: z.string(),
-  price: z.coerce.number().min(0, { message: "Price must be greater or equal to 0" }),
+  price: z.coerce.number().int().min(0, { message: "Price must be greater or equal to 0" }),
   category: z.nativeEnum(DishCategory),
 })
 
