@@ -26,9 +26,10 @@ export class Customer extends Model<CustomerAttributes, CustomerCreationAttribut
     Customer.init(
       {
         id: {
-          type: DataTypes.STRING,
+          type: DataTypes.UUID,
           autoIncrement: true,
           primaryKey: true,
+          defaultValue: DataTypes.UUIDV4,
         },
         name: {
           type: DataTypes.STRING,
