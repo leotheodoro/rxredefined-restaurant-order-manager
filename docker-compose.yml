@@ -1,0 +1,14 @@
+services:
+  pg-restaurant-order:
+    image: bitnami/postgresql:latest
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRESQL_USERNAME: ${POSTGRESQL_USERNAME}
+      POSTGRESQL_PASSWORD: ${POSTGRESQL_PASSWORD}
+      POSTGRESQL_DATABASE: ${POSTGRESQL_DATABASE}
+    volumes:
+      - 'pg-restaurant-order-data:/var/lib/postgresql/data'
+
+volumes:
+  pg-restaurant-order-data:
