@@ -3,4 +3,5 @@ import { CustomerAttributes, CustomerCreationAttributes } from "../database/sequ
 export interface CustomersRepository {
   create(data: CustomerCreationAttributes): Promise<CustomerAttributes>
   findByEmail(email: string): Promise<CustomerAttributes | null>
+  findById(id: string): Promise<CustomerAttributes | null>
 }

@@ -12,4 +12,5 @@ export interface DishesRepository {
     category?: DishCategory
   }): Promise<DishAttributes[]>
   count(category?: DishCategory): Promise<number>
+  findById(id: string): Promise<DishAttributes | null>
 }
