@@ -46,4 +46,15 @@ export class InMemoryOrdersRepository implements OrdersRepository {
 
     return order ?? null
   }
+
+  async findOrdersByCustomerId({ customerId, page, limit }: { customerId: string, page: number, limit: number }): Promise<(OrderAttributes & { items: OrderItemAttributes[] })[]> {
+    const orders = this.orders.filter((order) => order.customerId === customerId)
+
+    const ordersWithItems = orders.map((order) => ({
+      ...order,
+      items: this.orderItems.filter((item) => item.orderId === order.id),
+    }))
+
+    return ordersWithItems.slice((page - 1) * limit, page * limit)
+  }
 } 
