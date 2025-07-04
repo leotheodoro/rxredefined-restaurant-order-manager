@@ -45,7 +45,7 @@ describe("Find Orders By Customer Service", () => {
       ],
     })
 
-    const orders = await sut.execute({ customerId: customer.id })
+    const { orders } = await sut.execute({ customerId: customer.id })
 
     expect(orders).toHaveLength(1)
     expect(orders[0].customerId).toBe(customer.id)
@@ -57,4 +57,5 @@ describe("Find Orders By Customer Service", () => {
   it("should throw an error if customer does not exist", async () => {
     await expect(sut.execute({ customerId: "non-existing-customer-id" })).rejects.toThrow(CustomerNotFoundError)
   })
+
 })

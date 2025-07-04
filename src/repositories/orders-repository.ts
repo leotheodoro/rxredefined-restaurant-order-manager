@@ -5,4 +5,5 @@ export interface OrdersRepository {
   create(data: OrderCreationAttributes & { items: { dishId: string; quantity: number; unitPriceCents: number }[] }): Promise<OrderAttributes & { items: OrderItemAttributes[] }>
   findById(id: string): Promise<OrderAttributes | null>
   findOrdersByCustomerId({ customerId, page, limit }: { customerId: string, page: number, limit: number }): Promise<(OrderAttributes & { items: OrderItemAttributes[] })[]>
+  count(customerId?: string): Promise<number>
 } 

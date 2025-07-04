@@ -57,4 +57,12 @@ export class InMemoryOrdersRepository implements OrdersRepository {
 
     return ordersWithItems.slice((page - 1) * limit, page * limit)
   }
+
+  async count(customerId?: string): Promise<number> {
+    if (customerId) {
+      return this.orders.filter((order) => order.customerId === customerId).length
+    }
+
+    return this.orders.length
+  }
 } 

@@ -12,7 +12,8 @@ export class FindOrdersByCustomerService {
     }
 
     const orders = await this.ordersRepository.findOrdersByCustomerId({ customerId, page, limit })
+    const total = await this.ordersRepository.count(customerId)
 
-    return orders
+    return { orders, total }
   }
 }
