@@ -20,7 +20,7 @@ beforeEach(() => {
   sut = new CreateOrderService(ordersRepository, customersRepository, dishesRepository)
 })
 
-describe("CreateOrderService", () => {
+describe("Create Order Service", () => {
   it("should create a new order with valid data", async () => {
     const customer = await customersRepository.create({
       name: "John Doe",
