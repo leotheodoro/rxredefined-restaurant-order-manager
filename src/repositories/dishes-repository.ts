@@ -11,4 +11,5 @@ export interface DishesRepository {
     limit: number,
     category?: DishCategory
   }): Promise<DishAttributes[]>
+  count(category?: DishCategory): Promise<number>
 }

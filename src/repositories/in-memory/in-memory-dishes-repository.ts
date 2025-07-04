@@ -40,4 +40,12 @@ export class InMemoryDishesRepository implements DishesRepository {
         price: dish.price / 100,
       }));
   }
+
+  async count(category?: DishCategory): Promise<number> {
+    const filteredDishes = category
+      ? this.dishes.filter((dish) => dish.category === category)
+      : this.dishes;
+
+    return filteredDishes.length;
+  }
 }

@@ -22,6 +22,8 @@ export class FindDishesService {
       category
     })
 
-    return { dishes }
+    const total = await this.dishesRepository.count(category)
+
+    return { dishes, total }
   }
 }
