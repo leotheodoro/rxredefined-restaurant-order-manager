@@ -1,8 +1,8 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import { sequelize } from "../../../lib/sequelize";
 
-interface CustomerAttributes {
-  id: number;
+export interface CustomerAttributes {
+  id: string;
   name: string;
   email: string;
   phone: string;
@@ -10,11 +10,11 @@ interface CustomerAttributes {
   updatedAt?: Date;
 }
 
-type CustomerCreationAttributes = Optional<CustomerAttributes, "id" | "createdAt" | "updatedAt">;
+export type CustomerCreationAttributes = Optional<CustomerAttributes, "id" | "createdAt" | "updatedAt">;
 
 export class Customer extends Model<CustomerAttributes, CustomerCreationAttributes>
   implements CustomerAttributes {
-  public id!: number;
+  public id!: string;
   public name!: string;
   public email!: string;
   public phone!: string;
@@ -26,7 +26,7 @@ export class Customer extends Model<CustomerAttributes, CustomerCreationAttribut
     Customer.init(
       {
         id: {
-          type: DataTypes.INTEGER.UNSIGNED,
+          type: DataTypes.STRING,
           autoIncrement: true,
           primaryKey: true,
         },
