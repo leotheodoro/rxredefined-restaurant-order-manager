@@ -9,5 +9,14 @@ export default defineConfig([
   { files: ["**/*.{js,mjs,cjs,ts,mts,cts}"], plugins: { js }, extends: ["js/recommended"] },
   { files: ["**/*.{js,mjs,cjs,ts,mts,cts}"], languageOptions: { globals: globals.node } },
   tseslint.configs.recommended,
+  {
+    files: ["**/*.{ts,tsx,cts,mts}"],
+    rules: {
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
+      ]
+    }
+  },
   { files: ["**/*.json"], plugins: { json }, language: "json/json", extends: ["json/recommended"] },
 ]);
