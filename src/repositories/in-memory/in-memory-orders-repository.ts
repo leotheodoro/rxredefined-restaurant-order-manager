@@ -2,6 +2,7 @@ import { randomUUID } from "crypto";
 import { OrderAttributes, OrderCreationAttributes, OrderStatus } from "../../database/sequelize/models/order";
 import { OrdersRepository } from "../orders-repository";
 import { OrderItemAttributes } from "@/database/sequelize/models/order-item";
+import { OrderNotFoundError } from "@/services/_errors/order-not-found-error";
 
 interface OrderItemInput {
   dishId: string;
@@ -64,5 +65,15 @@ export class InMemoryOrdersRepository implements OrdersRepository {
     }
 
     return this.orders.length
+  }
+
+  async updateStatus(id: string, status: OrderStatus): Promise<void> {
+    const order = this.orders.find((order) => order.id === id)
+
+    if (!order) {
+      throw new OrderNotFoundError()
+    }
+
+    order.status = status
   }
 } 
