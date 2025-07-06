@@ -45,17 +45,29 @@ describe("Find Orders By Customer Service", () => {
       ],
     })
 
-    const { orders } = await sut.execute({ customerId: customer.id })
+    const { orders, total } = await sut.execute({ customerId: customer.id })
 
     expect(orders).toHaveLength(1)
     expect(orders[0].customerId).toBe(customer.id)
     expect(orders[0].totalAmountCents).toBe(1000)
     expect(orders[0].status).toBe(OrderStatus.PENDING)
     expect(orders[0].items).toHaveLength(1)
+    expect(total).toBe(1)
   })
 
   it("should throw an error if customer does not exist", async () => {
     await expect(sut.execute({ customerId: "non-existing-customer-id" })).rejects.toThrow(CustomerNotFoundError)
   })
 
+  it("should return an empty array if customer has no orders", async () => {
+    const customer = await customersRepository.create({
+      name: "John Doe",
+      email: "john.doe@example.com",
+      phone: "1234567890",
+    })
+
+    const { orders } = await sut.execute({ customerId: customer.id })
+
+    expect(orders).toHaveLength(0)
+  })
 })
