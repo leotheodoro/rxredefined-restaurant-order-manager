@@ -76,4 +76,29 @@ export class InMemoryOrdersRepository implements OrdersRepository {
 
     order.status = status
   }
+
+  async updateItems(orderId: string, items: { dishId: string; quantity: number; unitPriceCents: number }[]): Promise<void> {
+    const order = this.orders.find((order) => order.id === orderId)
+
+    if (!order) {
+      throw new OrderNotFoundError()
+    }
+
+    // Remove existing items for the order
+    this.orderItems = this.orderItems.filter((item) => item.orderId !== orderId)
+
+    const newOrderItems: OrderItemAttributes[] = items.map((item) => ({
+      id: randomUUID(),
+      orderId,
+      dishId: item.dishId,
+      quantity: item.quantity,
+      unitPriceCents: item.unitPriceCents,
+    }))
+
+    this.orderItems.push(...newOrderItems)
+
+    order.totalAmountCents = items.reduce((acc, item) => acc + item.unitPriceCents * item.quantity, 0)
+
+    order.updatedAt = new Date()
+  }
 } 
