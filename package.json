@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "tsx watch src/http/server.ts",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --runInBand",
-    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch --runInBand"
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch --runInBand",
+    "db:migrate": "sequelize db:migrate",
+    "db:migrate:undo": "sequelize db:migrate:undo:all"
   },
   "keywords": [],
   "author": "",
@@ -28,7 +30,8 @@
     "tsup": "^8.5.0",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.35.1"
+    "typescript-eslint": "^8.35.1",
+    "sequelize-cli": "^6.6.3"
   },
   "dependencies": {
     "dotenv": "^17.0.1",

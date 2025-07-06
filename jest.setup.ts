@@ -1,4 +1,4 @@
-process.env.NODE_ENV = 'dev'
+process.env.NODE_ENV = 'test'
 
 import { config as dotenvConfig } from 'dotenv'
 import { resolve } from 'path'
