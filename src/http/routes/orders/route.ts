@@ -7,7 +7,7 @@ import { updateOrderItemsController } from "@/http/controllers/orders/update-ord
 const ordersRoutes = Router()
 
 ordersRoutes.post('/order', createOrderController)
-ordersRoutes.get('/customers/orders/:customerId', findOrdersByCustomerController)
+ordersRoutes.get('/customer/orders/:customerId', findOrdersByCustomerController)
 ordersRoutes.patch('/order/:orderId', updateOrderStatusController)
 ordersRoutes.patch('/order/modify/:orderId', updateOrderItemsController)
 
