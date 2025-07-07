@@ -39,3 +39,5 @@ npm test
 ```
 
 I used in-memory layer repositories to run unit tests.
+
+I also added unit tests to run on the CI (Github Workflows), so you can see the tests running there.
