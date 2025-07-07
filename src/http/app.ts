@@ -29,7 +29,7 @@ const options: Options = {
       version: '1.0.0',
     },
   },
-  apis: ['src/http/**/*.{ts}'],
+  apis: ['./src/http/**/*.ts'],
 };
 
 const swaggerSpec = swaggerJsdoc(options);
