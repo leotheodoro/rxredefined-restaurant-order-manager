@@ -26,7 +26,10 @@ export class SequelizeOrdersRepository implements OrdersRepository {
         { transaction: t }
       )
 
-      return { ...order, items: orderItems }
+      return {
+        ...order.get({ plain: true }),
+        items: orderItems.map((it) => it.get({ plain: true })),
+      }
     })
   }
 
@@ -49,8 +52,10 @@ export class SequelizeOrdersRepository implements OrdersRepository {
     const items = await OrderItem.findAll({ where: { orderId: orderIds } })
 
     return orders.map((order) => ({
-      ...order,
-      items: items.filter((item) => item.orderId === order.id),
+      ...order.get({ plain: true }),
+      items: items
+        .filter((item) => item.orderId === order.id)
+        .map((it) => it.get({ plain: true })),
     }))
   }
 
