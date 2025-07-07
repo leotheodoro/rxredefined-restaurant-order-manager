@@ -3,6 +3,6 @@ import { createCustomerController } from '@/http/controllers/customers/create-cu
 
 const customersRoutes = Router()
 
-customersRoutes.post('/customers', createCustomerController)
+customersRoutes.post('/customer', createCustomerController)
 
 export { customersRoutes }
