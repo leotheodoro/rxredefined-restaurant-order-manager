@@ -16,6 +16,6 @@ app.use(ordersRoutes)
 app.use(errorHandler)
 
 app.get("/", (req, res) => {
-  res.send("Rx Redefine API");
+  res.send("Rx Redefined API");
 });
 
