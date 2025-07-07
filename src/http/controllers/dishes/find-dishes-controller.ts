@@ -13,8 +13,25 @@ const findDishesQuerySchema = z.object({
  * @openapi
  * /menu:
  *   get:
- *     summary: List available dishes
- *     tags: [Dishes]
+ *     summary: List the menu
+ *     tags: [Menu]
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         description: Page number
+ *         schema:
+ *           type: number
+ *       - in: query
+ *         name: limit
+ *         description: Number of items per page
+ *         schema:
+ *           type: number
+ *       - in: query
+ *         name: category
+ *         description: Filter by category
+ *         schema:
+ *           type: string
+ *           enum: [starter, main_course, dessert, drink]
  *     responses:
  *       200:
  *         description: A list of dishes
