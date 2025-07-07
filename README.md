@@ -30,6 +30,8 @@ You should see this:
 Server is running on port 3333 in development mode
 ```
 
+In order to test the routes, I had some free time before delivering the test, so I add Swagger that you can access through `/docs` and test through there. ;)
+
 ---
 
 ## 🧪 Running Unit Tests
