@@ -1,5 +1,5 @@
 import { CustomersRepository } from "../../repositories/customers-repository";
-import { CustomerAlreadyExistsError } from "../_errors/customer-already-exists-erorr";
+import { CustomerAlreadyExistsError } from "../_errors/customer-already-exists-error";
 
 interface CreateCustomerServiceRequest {
   name: string

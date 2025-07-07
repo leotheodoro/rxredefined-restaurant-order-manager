@@ -1,6 +1,6 @@
 import { InMemoryCustomersRepository } from "@/repositories/in-memory/in-memory-customers-repository"
 import { CreateCustomerService } from "./create-customer"
-import { CustomerAlreadyExistsError } from "../_errors/customer-already-exists-erorr"
+import { CustomerAlreadyExistsError } from "../_errors/customer-already-exists-error"
 
 let customersRepository: InMemoryCustomersRepository
 let sut: CreateCustomerService

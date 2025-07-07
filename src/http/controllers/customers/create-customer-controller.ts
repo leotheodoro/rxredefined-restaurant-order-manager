@@ -1,5 +1,5 @@
 
-import { CustomerAlreadyExistsError } from '@/services/_errors/customer-already-exists-erorr'
+import { CustomerAlreadyExistsError } from '@/services/_errors/customer-already-exists-error'
 import { makeCreateCustomerService } from '@/services/_factories/customers/make-create-customer-service'
 import { Request, Response } from 'express'
 import { z } from 'zod'
