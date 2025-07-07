@@ -34,7 +34,10 @@ cp .env.example .env
 # 4. Launch PostgreSQL via Docker Compose (detached)
 docker compose up -d
 
-# 5. Start the application in watch mode
+# 5. Run database migrations (creates tables & enums)
+npm run db:migrate
+
+# 6. Start the application in watch mode
 npm run dev
 ```
 
