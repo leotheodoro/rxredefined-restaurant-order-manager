@@ -39,7 +39,6 @@ module.exports = {
       },
     });
 
-    // Add foreign key
     await queryInterface.addConstraint('orders', {
       fields: ['customer_id'],
       type: 'foreign key',

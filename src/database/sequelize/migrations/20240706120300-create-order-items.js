@@ -41,7 +41,6 @@ module.exports = {
       },
     });
 
-    // FK order_id -> orders.id
     await queryInterface.addConstraint('order_items', {
       fields: ['order_id'],
       type: 'foreign key',
@@ -54,7 +53,6 @@ module.exports = {
       onUpdate: 'CASCADE',
     });
 
-    // FK dish_id -> dishes.id
     await queryInterface.addConstraint('order_items', {
       fields: ['dish_id'],
       type: 'foreign key',
