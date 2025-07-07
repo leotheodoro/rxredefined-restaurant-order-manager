@@ -12,6 +12,34 @@ const findOrdersQuerySchema = z.object({
   limit: z.coerce.number().int().min(1).default(10),
 })
 
+/**
+ * @openapi
+ * /customer/orders/{customerId}:
+ *   get:
+ *     summary: List Orders by Customer with pagination
+ *     tags: [Orders]
+ *     parameters:
+ *       - in: path
+ *         name: customerId
+ *         required: true
+ *         schema:
+ *           type: string
+ *       - in: query
+ *         name: page
+ *         description: Page number
+ *         schema:
+ *           type: number
+ *       - in: query
+ *         name: limit
+ *         description: Number of items per page
+ *         schema:
+ *           type: number
+ *     responses:
+ *       200:
+ *         description: A list of orders for the customer
+ *       404:
+ *         description: Customer not found
+ */
 export const findOrdersByCustomerController = async (request: Request, response: Response) => {
   const { customerId } = findOrdersParamsSchema.parse(request.params)
   const { page, limit } = findOrdersQuerySchema.parse(request.query)

@@ -18,6 +18,46 @@ const updateOrderItemsBodySchema = z.object({
   items: z.array(itemSchema).nonempty({ message: "Items cannot be empty" }),
 })
 
+/**
+ * @openapi
+ * /order/modify/{orderId}:
+ *   patch:
+ *     summary: Modify an Order
+ *     tags: [Orders]
+ *     parameters:
+ *       - in: path
+ *         name: orderId
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [items]
+ *             properties:
+ *               items:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ *                   required: [dishId, quantity]
+ *                   properties:
+ *                     dishId:
+ *                       type: string
+ *                       format: uuid
+ *                     quantity:
+ *                       type: number
+ *                       minimum: 1
+ *     responses:
+ *       204:
+ *         description: Order items updated
+ *       404:
+ *         description: Order or dish not found
+ *       400:
+ *         description: Validation error
+ */
 export const updateOrderItemsController = async (request: Request, response: Response) => {
   const { orderId } = updateOrderItemsParamsSchema.parse(request.params)
   const { items } = updateOrderItemsBodySchema.parse(request.body)
