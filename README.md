@@ -1,6 +1,6 @@
 # RxRedefined – Restaurant Order Manager
 
-Technical test for RxRedefined - Restaurant Order Manager
+Technical test for RxRedefined - Restaurant Order Manager. Using Express.js & PostgreSQL
 
 ---
 
