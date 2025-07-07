@@ -54,3 +54,38 @@ npm test
 ```
 
 The test suite is powered by Jest and uses an in-memory database for fast and deterministic runs.
+
+---
+
+## 💡 Design decisions
+
+### Why the `bitnami/postgresql` image?
+I chose the Bitnami flavor instead of the vanilla `postgres` image because Bitnami ships opinionated, secure defaults out-of-the-box. Things like non-root execution, disabled remote superuser login, and sensible default configs reduce the attack surface with zero extra effort—perfect for a take-home project where reviewer time is limited.
+
+### Money stored as **integer cents**
+Prices are persisted as `INTEGER` values that represent _cents_ (e.g., `1999` ⇒ **$19.99**). For this app there is no need for:
+* tax breakdowns
+* multi-currency conversions
+* interest / yield calculations
+
+Hence `INTEGER` offers sufficient precision, avoids floating-point pitfalls, and is faster and smaller on disk than `DECIMAL`.
+
+### Snapshotted dish prices on order creation
+Each `order_item` stores the dish's **unit price at the moment the order was placed**. This guarantees historical accuracy for analytics even if menu prices change later.
+
+---
+
+## 🔧 Suggested RESTful endpoint
+The assessment specified certain endpoint paths, so I implemented them verbatim. In a production codebase I would align the API with common REST naming conventions:
+
+| Action | Recommended Path & Verb |
+|--------|------------------------|
+| Register customer | `POST /customers` |
+| Add dish to menu | `POST /dishes` |
+| List menu | `GET /dishes` |
+| Create order | `POST /orders` |
+| List customer orders | `GET /customers/:customerId/orders` |
+| Update order status | `PATCH /orders/:orderId/status` |
+| Modify order items | `PATCH /orders/:orderId/items` |
+
+All resources are plural and nested only when it clarifies hierarchy (e.g., orders _belong to_ a customer).
