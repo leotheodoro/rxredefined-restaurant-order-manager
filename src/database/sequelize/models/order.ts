@@ -22,14 +22,14 @@ export interface OrderAttributes {
 export type OrderCreationAttributes = Optional<OrderAttributes, "id" | "status" | "totalAmountCents" | "createdAt" | "updatedAt" | "deletedAt">;
 
 export class Order extends Model<OrderAttributes, OrderCreationAttributes> implements OrderAttributes {
-  public id!: string;
-  public customerId!: string;
-  public status!: OrderStatus;
-  public totalAmountCents!: number;
+  declare id: string;
+  declare customerId: string;
+  declare status: OrderStatus;
+  declare totalAmountCents: number;
 
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
-  public readonly deletedAt!: Date;
+  declare readonly createdAt: Date;
+  declare readonly updatedAt: Date;
+  declare readonly deletedAt: Date;
 
   static initialize() {
     Order.init(

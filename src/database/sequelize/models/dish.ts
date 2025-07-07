@@ -21,14 +21,14 @@ export interface DishAttributes {
 export type DishCreationAttributes = Optional<DishAttributes, "id" | "createdAt" | "updatedAt">;
 
 export class Dish extends Model<DishAttributes, DishCreationAttributes> implements DishAttributes {
-  public id!: string;
-  public name!: string;
-  public description!: string;
-  public priceCents!: number;
-  public category!: DishCategory;
+  declare id: string;
+  declare name: string;
+  declare description: string;
+  declare priceCents: number;
+  declare category: DishCategory;
 
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
+  declare readonly createdAt: Date;
+  declare readonly updatedAt: Date;
 
   static initialize() {
     Dish.init(

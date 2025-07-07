@@ -14,13 +14,13 @@ export type CustomerCreationAttributes = Optional<CustomerAttributes, "id" | "cr
 
 export class Customer extends Model<CustomerAttributes, CustomerCreationAttributes>
   implements CustomerAttributes {
-  public id!: string;
-  public name!: string;
-  public email!: string;
-  public phone!: string;
+  declare id: string;
+  declare name: string;
+  declare email: string;
+  declare phone: string;
 
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
+  declare readonly createdAt: Date;
+  declare readonly updatedAt: Date;
 
   static initialize() {
     Customer.init(

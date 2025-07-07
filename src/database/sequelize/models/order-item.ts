@@ -15,15 +15,15 @@ export interface OrderItemAttributes {
 export type OrderItemCreationAttributes = Optional<OrderItemAttributes, "id" | "createdAt" | "updatedAt" | "deletedAt">;
 
 export class OrderItem extends Model<OrderItemAttributes, OrderItemCreationAttributes> implements OrderItemAttributes {
-  public id!: string;
-  public orderId!: string;
-  public dishId!: string;
-  public quantity!: number;
-  public unitPriceCents!: number;
+  declare id: string;
+  declare orderId: string;
+  declare dishId: string;
+  declare quantity: number;
+  declare unitPriceCents: number;
 
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
-  public readonly deletedAt!: Date;
+  declare readonly createdAt: Date;
+  declare readonly updatedAt: Date;
+  declare readonly deletedAt: Date;
 
   static initialize() {
     OrderItem.init(
@@ -36,10 +36,12 @@ export class OrderItem extends Model<OrderItemAttributes, OrderItemCreationAttri
         orderId: {
           type: DataTypes.UUID,
           allowNull: false,
+          field: "order_id",
         },
         dishId: {
           type: DataTypes.UUID,
           allowNull: false,
+          field: "dish_id",
         },
         quantity: {
           type: DataTypes.INTEGER,
@@ -54,6 +56,7 @@ export class OrderItem extends Model<OrderItemAttributes, OrderItemCreationAttri
           validate: {
             min: 0,
           },
+          field: "unit_price_cents",
         },
       },
       {
