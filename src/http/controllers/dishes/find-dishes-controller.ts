@@ -9,6 +9,16 @@ const findDishesQuerySchema = z.object({
   category: z.nativeEnum(DishCategory).optional(),
 })
 
+/**
+ * @openapi
+ * /menu:
+ *   get:
+ *     summary: List available dishes
+ *     tags: [Dishes]
+ *     responses:
+ *       200:
+ *         description: A list of dishes
+ */
 export const findDishesController = async (request: Request, response: Response) => {
   const { page, limit, category } = findDishesQuerySchema.parse(request.query)
 
